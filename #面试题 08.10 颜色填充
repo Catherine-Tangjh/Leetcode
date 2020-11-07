@@ -1,0 +1,13 @@
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, newColor: int) -> List[List[int]]:
+        def Dfs(x, y, row, col, newColor, oldColor):
+            if 0 <= x < row and 0 <= y < col and image[x][y] == oldColor and image[x][y] != newColor:
+                image[x][y] = newColor
+                Dfs(x-1, y, row, col, newColor, oldColor)
+                Dfs(x+1, y, row, col, newColor, oldColor)
+                Dfs(x, y-1, row, col, newColor, oldColor)
+                Dfs(x, y+1, row, col, newColor, oldColor)
+
+        row, col = len(image), len(image[0])
+        Dfs(sr, sc, row, col, newColor, image[sr][sc])
+        return image
