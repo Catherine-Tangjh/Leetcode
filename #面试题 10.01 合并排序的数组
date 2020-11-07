@@ -1,0 +1,18 @@
+class Solution:
+    def merge(self, A: List[int], m: int, B: List[int], n: int) -> None:
+        """
+        Do not return anything, modify A in-place instead.
+        """
+        i = m-1
+        j = n-1
+        all_n = m+n-1
+        while i >= 0 and j >= 0:
+            if A[i] >= B[j]:
+                A[all_n] = A[i]
+                i -= 1
+            else:
+                A[all_n] = B[j]
+                j -= 1
+            all_n -= 1
+        if i < 0:
+            A[:all_n+1] = B[:all_n+1]
