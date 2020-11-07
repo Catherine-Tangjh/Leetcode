@@ -1,0 +1,20 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def getKthFromEnd(self, head: ListNode, k: int) -> ListNode:
+        node = head
+        index_node = head
+        num = 1
+        while index_node.next != None:
+            if num == k and index_node.next == None:
+                break
+            if num == k and index_node.next != None:
+                node = node.next
+                num -= 1
+            index_node = index_node.next
+            num += 1
+        return node
