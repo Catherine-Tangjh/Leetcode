@@ -1,0 +1,18 @@
+class Solution:
+    def nthMagicalNumber(self, N: int, A: int, B: int) -> int:
+        from math import gcd
+        L = A*B / gcd(A, B)
+
+        def nb_magic(x):
+            return x//A + x//B - x//L
+
+        lo, hi = 0, 10**18
+        MOD = 10**9 + 7
+
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if nb_magic(mid) < N:
+                lo = mid + 1
+            else:
+                hi = mid
+        return lo % MOD
