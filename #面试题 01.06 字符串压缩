@@ -1,0 +1,24 @@
+class Solution:
+    def compressString(self, S: str) -> str:
+        if len(S) <= 2:
+            return S
+        new_S = ''
+        ch = S[0]
+        num = 1
+        i = 1
+        while i < len(S):
+            if S[i] == ch:
+                num += 1
+                i += 1
+            else:
+                new_S += ch
+                new_S += str(num)
+                ch = S[i]
+                num = 1
+                i += 1
+        new_S += ch
+        new_S += str(num)
+        if len(S) <= len(new_S):
+            return S
+        else:
+            return new_S
