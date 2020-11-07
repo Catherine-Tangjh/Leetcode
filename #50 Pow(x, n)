@@ -1,0 +1,17 @@
+class Solution:
+
+    def myPow(self, x: float, n: int) -> float:
+        def quickMul(N):
+            res = 1.0
+            x_res = x
+            while N > 0:
+                if N % 2:
+                    res *= x_res
+                x_res *= x_res
+                N //= 2
+            return res
+
+        if n > 0:
+            return quickMul(n)
+        else:
+            return 1/quickMul(-n)
